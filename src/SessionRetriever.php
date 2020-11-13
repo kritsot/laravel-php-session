@@ -40,14 +40,14 @@ final class SessionRetriever
             return $this->session;
         }
 
-        ini_set('session.gc_maxlifetime', '1800');
-        ini_set('session.save_handler', 'redis');
-        ini_set('session.save_path', $this->path);
-        ini_set('session.cookie_domain', $this->domain);
-        ini_set('session.cookie_secure', (string) $this->secure);
-        ini_set('session.cookie_httponly', '1');
+        @ini_set('session.gc_maxlifetime', '1800');
+        @ini_set('session.save_handler', 'redis');
+        @ini_set('session.save_path', $this->path);
+        @ini_set('session.cookie_domain', $this->domain);
+        @ini_set('session.cookie_secure', (string) $this->secure);
+        @ini_set('session.cookie_httponly', '1');
 
-        session_start();
+        @session_start();
 
         $this->session = $_SESSION;
 
